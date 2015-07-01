@@ -1,6 +1,6 @@
 #!flask/bin/python
 from flask import Flask, jsonify, request, abort
-from polyglot.text import Text
+from polyglot.text import Text, Word
 
 app = Flask(__name__)
 
@@ -17,7 +17,6 @@ def ner():
             result[entity.tag] = set()
 
         result[entity.tag].add(' '.join(entity))
-        print(entity.tag, entity)
 
     for tagType in result:
         result[tagType] = list(result[tagType])
